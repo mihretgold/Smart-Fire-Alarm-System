@@ -9,14 +9,13 @@ class OsmMap extends StatefulWidget {
 }
 
 class _OsmMapState extends State<OsmMap> {
-
   // default constructor
- MapController controller = MapController(
-                            initPosition: GeoPoint(latitude: 47.4358055, longitude: 8.4737324),
-            );
+  MapController controller = MapController(
+    initPosition: GeoPoint(latitude: 47.4358055, longitude: 8.4737324),
+  );
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     controller.dispose();
   }
@@ -29,36 +28,36 @@ class _OsmMapState extends State<OsmMap> {
           OSMFlutter( 
         controller:controller,
         osmOption: OSMOption(
-              userTrackingOption: const UserTrackingOption(
+              userTrackingOption: UserTrackingOption(
               enableTracking: true,
               unFollowUser: false,
             ),
-            zoomOption: const ZoomOption(
+            zoomOption: ZoomOption(
                   initZoom: 8,
                   minZoomLevel: 3,
                   maxZoomLevel: 19,
                   stepZoom: 1.0,
             ),
             userLocationMarker: UserLocationMaker(
-                personMarker: const MarkerIcon(
+                personMarker: MarkerIcon(
                     icon: Icon(
                         Icons.location_history_rounded,
                         color: Colors.red,
                         size: 48,
                     ),
                 ),
-                directionArrowMarker: const MarkerIcon(
+                directionArrowMarker: MarkerIcon(
                     icon: Icon(
                         Icons.double_arrow,
                         size: 48,
                     ),
                 ),
             ),
-            roadConfiguration: const RoadOption(
+            roadConfiguration: RoadOption(
                     roadColor: Colors.yellowAccent,
             ),
             markerOption: MarkerOption(
-                defaultMarker: const MarkerIcon(
+                defaultMarker: MarkerIcon(
                     icon: Icon(
                       Icons.person_pin_circle,
                       color: Colors.blue,
@@ -67,7 +66,7 @@ class _OsmMapState extends State<OsmMap> {
                 )
             ),
         )
-    ),
+    )
         ],
       ),
     );
