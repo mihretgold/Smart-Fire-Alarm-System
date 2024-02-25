@@ -29,12 +29,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
             icon: const Icon(Icons.arrow_back_ios)),
-        title: const Text('Fire Stations Map'),
+        title: const Text('Fire Stations Map', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
         actions: [
           PopupMenuButton<Location>(

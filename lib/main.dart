@@ -1,3 +1,4 @@
+import 'package:fire_alarm_system/pages/splah_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fire_alarm_system/pages/onboarding_page.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnboardingPage(),
+      home: SplashScreen(),
     );
   }
 }
