@@ -1,3 +1,4 @@
+import 'package:fire_alarm_system/utils/locations.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,14 +35,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       }
 
       Position location = await Geolocator.getCurrentPosition();
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MyHomePage(
-              latitude: location.latitude,
-              longitude: location.longitude,
-            ),
-          ));
+      return location;
     } catch (e) {
       // Handle exception, e.g., display an error message to the user
       print("Error getting location: $e");
@@ -54,10 +48,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
       // Check permissions and handle errors as before
       _currentLocation = await _getCurrentLocation();
       if (_currentLocation != null) {
+        List<Location> sortedLocations =
+            sortLocationsByDistance(_currentLocation!, Location.positions);
+        // for (int i = 0; i < sortedLocations.length; i++){
+        //   debugPrint(sortedLocations[i].name);
+        // }
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => MyHomePage(
+              sortedLocation: sortedLocations,
               latitude: _currentLocation!.latitude,
               longitude: _currentLocation!.longitude,
             ),
